@@ -14,11 +14,21 @@ from sklearn.externals import joblib
 import argparse
 import xgboost_linking
 from ner_model import NerModel
+import logging
+logging.basicConfig(level=logging.WARNING)
+logging.getLogger('allennlp.common.params').disabled = True
+logging.getLogger('allennlp.nn.initializers').disabled = True
+logging.getLogger('allennlp.common.from_params').disabled = True
+logging.getLogger('ner_rcc.rcc_ner').disabled = True
+logging.getLogger('matplotlib.font_manager').disabled = True
+logging.getLogger('allennlp.models.archival').disabled = True
+logging.getLogger('allennlp.data.vocabulary').disabled = True
+logging.getLogger('allennlp.models.model').disabled = True
 
 from allennlp.models.archival import load_archive
 from allennlp.service.predictors import Predictor
 from field_classifier.classifier import Classifier
-from field_classifier.predictor import Seq2SeqPredictor
+from field_classifier.predictor import ClassifierPredictor
 from field_classifier.textcat import TextCatReader
 import os
 import json
@@ -366,11 +376,11 @@ def main(dev_evaluation, error_analysis, methods_only, holdout_eval, ner_only=Fa
     l0_archive = load_archive(
                 os.path.abspath(os.path.join("project", "data", "model_logs", "l0_model.tar.gz"))
             )
-    l0_predictor = Predictor.from_archive(l0_archive, 'seq2seq')
+    l0_predictor = Predictor.from_archive(l0_archive, 'classifier')
     l1_archive = load_archive(
                 os.path.abspath(os.path.join("project", "data", "model_logs", "l1_model.tar.gz"))
             )
-    l1_predictor = Predictor.from_archive(l1_archive, 'seq2seq')
+    l1_predictor = Predictor.from_archive(l1_archive, 'classifier')
     with open(test_publications_path, 'r') as file_:
             test_pubs = json.load(file_)
     clf_output = []

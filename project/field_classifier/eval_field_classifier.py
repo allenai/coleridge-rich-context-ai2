@@ -1,20 +1,20 @@
 from allennlp.models.archival import load_archive
 from allennlp.service.predictors import Predictor
 from field_classifier.classifier import Classifier
-from field_classifier.predictor import Seq2SeqPredictor
+from field_classifier.predictor import ClassifierPredictor
 from field_classifier.textcat import TextCatReader
 import os
 import json
 import numpy as np
 
 l0_archive = load_archive(
-                os.path.abspath(os.path.join("project", "data", "model_logs", "l0_model.tar.gz"))
+                os.path.abspath(os.path.join("data", "model_logs", "l0_model.tar.gz"))
             )
-l0_predictor = Predictor.from_archive(l0_archive, 'seq2seq')
+l0_predictor = Predictor.from_archive(l0_archive, 'classifier')
 l1_archive = load_archive(
-            os.path.abspath(os.path.join("project", "data", "model_logs", "l1_model.tar.gz"))
+            os.path.abspath(os.path.join("data", "model_logs", "l1_model.tar.gz"))
         )
-l1_predictor = Predictor.from_archive(l1_archive, 'seq2seq')
+l1_predictor = Predictor.from_archive(l1_archive, 'classifier')
 test_pubs = [{"title": "this is a test", "publication_id": 1}]
 clf_output = []
 l0_label_map = l0_archive.model.vocab.get_index_to_token_vocabulary("labels")

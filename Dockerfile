@@ -30,7 +30,7 @@ RUN pip3 install dist/scispacy-0.1.0-unreleased.tar.gz && \
 # clone the rich context repo into /rich-context-competition
 RUN git clone https://github.com/Coleridge-Initiative/rich-context-competition.git /rich-context-competition
 
-RUN pip3 install xgboost==0.81 allennlp==0.7.1 textacy==0.6.2
+RUN pip3 install xgboost==0.81 allennlp==0.8.1 textacy==0.6.2
 
 RUN pip3 install msgpack==0.5.6 msgpack-numpy==0.4.4.0 thinc==6.12.0
 

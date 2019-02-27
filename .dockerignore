@@ -1,0 +1,17 @@
+**/*.json
+**/*.pdf
+**/*.txt
+**/*.spacy
+**/*.py
+**/*.gz
+**/*.git
+**/*.sh
+**/*.md
+**/*.txt
+**/*.yaml
+**/*.conll
+**/*.idea
+**/*.vscode
+**/*.pyc
+**/*.pkl
+!**/dist/*

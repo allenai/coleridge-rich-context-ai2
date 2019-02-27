@@ -4,8 +4,8 @@ from allennlp.common.util import JsonDict
 from allennlp.data import Instance
 from allennlp.predictors.predictor import Predictor
 
-@Predictor.register('seq2seq')
-class Seq2SeqPredictor(Predictor):
+@Predictor.register('classifier')
+class ClassifierPredictor(Predictor):
     """
     Predictor for the :class:`~allennlp.models.text_classification.Seq2Seq` model.
     """
@@ -34,4 +34,4 @@ class Seq2SeqPredictor(Predictor):
         Expects JSON that looks like ``{"title": "..."}``.
         """
         title = json_dict["title"]
-        return self._dataset_reader.text_to_instance(tokens=title)
+        return self._dataset_reader.text_to_instance(text=title)
