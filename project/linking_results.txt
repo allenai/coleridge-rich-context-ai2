@@ -1,0 +1,546 @@
+v1: prior entity probability feature, null pair training
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.23145884270578648
+        Recall: 0.6283185840707964
+        Accuracy: 0.203584229390681
+        F1: 0.33829660512209647
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.2871287128712871
+        Recall: 0.58
+        Accuracy: 0.23770491803278687
+        F1: 0.3841059602649007
+
+v2: v1 + p(e|m), null pair training
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.5186915887850467
+        Recall: 0.24557522123893805
+        Accuracy: 0.2
+        F1: 0.3333333333333333
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.46153846153846156
+        Recall: 0.12
+        Accuracy: 0.10526315789473684
+        F1: 0.19047619047619047
+
+v3: v2 + p(m|e), null pair training
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.39338235294117646
+        Recall: 0.47345132743362833
+        Accuracy: 0.27365728900255754
+        F1: 0.429718875502008
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.39622641509433965
+        Recall: 0.42
+        Accuracy: 0.25609756097560976
+        F1: 0.4077669902912621
+
+v4: v3 + year match feature (5 sentence context range), null pair training
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.31135135135135134
+        Recall: 0.6371681415929203
+        Accuracy: 0.2644628099173554
+        F1: 0.4183006535947712
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.35185185185185186
+        Recall: 0.57
+        Accuracy: 0.2780487804878049
+        F1: 0.4351145038167939
+
+dataset v4 + xgboost binary clf
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.5
+        Recall: 0.45132743362831856
+        Accuracy: 0.31097560975609756
+        F1: 0.47441860465116276
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.5194805194805194
+        Recall: 0.4
+        Accuracy: 0.291970802919708
+        F1: 0.4519774011299435
+
+xgboost, v4 + contextual similarity feature
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.5189873417721519
+        Recall: 0.41
+        Accuracy: 0.2971014492753623
+        F1: 0.45810055865921784
+
+xgboost, v4 + mention length
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.4725274725274725
+        Recall: 0.43
+        Accuracy: 0.2905405405405405
+        F1: 0.45026178010471196
+
+xgboost model v4, includes mention sentence length, is acronym, and section features
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        
+        POST LINKING EVALUATION
+        Precision: 0.5273833671399595
+        Recall: 0.5752212389380531
+        Accuracy: 0.3795620437956204
+        F1: 0.5502645502645503
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.4942528735632184
+        Recall: 0.43
+        Accuracy: 0.2986111111111111
+        F1: 0.45989304812834225
+
+lost: random search, redone rule based
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.6307692307692307
+        Recall: 0.7256637168141593
+        Accuracy: 0.5093167701863354
+        F1: 0.6748971193415638
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.39568345323741005
+        Recall: 0.55
+        Accuracy: 0.29891304347826086
+        F1: 0.4602510460251046
+
+5: -log normalization for p(e)
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.6216730038022814
+        Recall: 0.7234513274336283
+        Accuracy: 0.5023041474654378
+        F1: 0.6687116564417178
+
+        TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        
+        POST LINKING EVALUATION
+        Precision: 0.4297520661157025
+        Recall: 0.52
+        Accuracy: 0.3076923076923077
+        F1: 0.4705882352941177
+
+6: updated contextual similarity feature
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.6233009708737864
+        Recall: 0.7101769911504425
+        Accuracy: 0.4969040247678019
+        F1: 0.6639089968976216
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+
+        POST LINKING EVALUATION
+        Precision: 0.3969465648854962
+        Recall: 0.52
+        Accuracy: 0.2905027932960894
+        F1: 0.4502164502164502
+
+7: 5 + context word count
+
+    DEV SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+
+        POST LINKING EVALUATION
+        Precision: 0.6460348162475822
+        Recall: 0.7389380530973452
+        Accuracy: 0.525984251968504
+        F1: 0.6893704850361196
+
+    TEST SET EVALUATION
+
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        
+        POST LINKING EVALUATION
+        Precision: 0.424
+        Recall: 0.53
+        Accuracy: 0.3081395348837209
+        F1: 0.47111111111111115
+
+13:  aggregated mentions, normal dev/test 
+     feats = [prior_entity_probability,
+     prior_entity_given_mention_prob,
+     prior_mention_given_entity_prob,
+     year_match,
+     mention_length_chars,
+     mention_length_tokens,
+     max_len,
+     min_len,
+     is_acronym] + \
+     section_features + \
+     [context_word_overlap] + \
+     [is_null_candidate]
+
+     DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.7152777777777778
+        Recall: 0.4557522123893805
+        Accuracy: 0.3857677902621723
+        F1: 0.5567567567567567
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.6666666666666666
+        Recall: 0.34
+        Accuracy: 0.2905982905982906
+        F1: 0.45033112582781465
+
+14:  aggregated mentions, flipped dev/test tuning
+     feats = [prior_entity_probability,
+     prior_entity_given_mention_prob,
+     prior_mention_given_entity_prob,
+     year_match,
+     mention_length_chars,
+     mention_length_tokens,
+     max_len,
+     min_len,
+     is_acronym] + \
+     section_features + \
+     [context_word_overlap] + \
+     [is_null_candidate]
+
+     DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.7030075187969925
+        Recall: 0.413716814159292
+        Accuracy: 0.352165725047081
+        F1: 0.520891364902507
+        TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.78
+        Recall: 0.39
+        Accuracy: 0.35135135135135137
+        F1: 0.5200000000000001
+
+15: 13 without aggregated mentions
+
+    DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.5303030303030303
+        Recall: 0.6194690265486725
+        Accuracy: 0.4
+        F1: 0.5714285714285714
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.5299145299145299
+        Recall: 0.62
+        Accuracy: 0.4
+        F1: 0.5714285714285714
+
+16: 14 without aggregated mentions
+    DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.5170454545454546
+        Recall: 0.6039823008849557
+        Accuracy: 0.38613861386138615
+        F1: 0.557142857142857
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.5730337078651685
+        Recall: 0.51
+        Accuracy: 0.3695652173913043
+        F1: 0.5396825396825395
+
+19: aggregated mentions, 
+    feats = [prior_entity_probability,
+             prior_entity_given_mention_prob,
+             prior_mention_given_entity_prob,
+             year_match,
+             mention_length_chars,
+             mention_length_tokens,
+             max_len,
+             min_len,
+             is_acronym] + \
+             section_features + \
+             [context_word_overlap] + \
+             [is_null_candidate]
+    param_dist = {"max_depth": range(2, 8),
+                  "learning_rate": [10**x for x in range(-1, 0)],
+                  "n_estimators": range(1, 150),
+                  "colsample_by_tree": np.linspace(0.3, 0.5, 3),
+                  "min_child_weight": range(5, 11)}
+
+    DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.7152542372881356
+        Recall: 0.4668141592920354
+        Accuracy: 0.39365671641791045
+        F1: 0.5649263721552878
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.7258064516129032
+        Recall: 0.45
+        Accuracy: 0.38461538461538464
+        F1: 0.5555555555555557
+
+20: 19 without aggregated mentions
+
+    DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.5357833655705996
+        Recall: 0.6128318584070797
+        Accuracy: 0.40028901734104044
+        F1: 0.5717234262125902
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.5697674418604651
+        Recall: 0.49
+        Accuracy: 0.35766423357664234
+        F1: 0.5268817204301076
+
+21_full: 19 with retraining on train and dev
+
+    DEV SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.09598818606940684
+        Recall: 0.8628318584070797
+        Accuracy: 0.09454545454545454
+        F1: 0.17275747508305647
+        POST LINKING EVALUATION
+        Precision: 0.8106312292358804
+        Recall: 0.5398230088495575
+        Accuracy: 0.4793713163064833
+        F1: 0.648074369189907
+    TEST SET EVALUATION
+        PRE LINKING EVALUATION
+        Precision: 0.11948790896159317
+        Recall: 0.84
+        Accuracy: 0.1168289290681502
+        F1: 0.20921544209215442
+        POST LINKING EVALUATION
+        Precision: 0.7704918032786885
+        Recall: 0.47
+        Accuracy: 0.41228070175438597
+        F1: 0.5838509316770186
+
