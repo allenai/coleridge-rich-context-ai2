@@ -1,0 +1,111 @@
+// Configuration for a named entity recognization model based on:
+//   Peters, Matthew E. et al. “Deep contextualized word representations.” NAACL-HLT (2018).
+// Modified to include a custom dataset reader
+{
+  "dataset_reader": {
+    "type": "rcc-ner",
+    "tag_label": "ner",
+    "coding_scheme": "BIOUL",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": false
+      },
+      "token_characters": {
+        "type": "characters",
+        "character_tokenizer": {
+          "end_tokens": ["@@PADDING@@", "@@PADDING@@"]
+        }
+      },
+    },
+    "percent_negatives": 30,
+    "cutoff_sentence_length": 20
+  },
+  "validation_dataset_reader": {
+    "type": "conll2003",
+    "tag_label": "ner",
+    "coding_scheme": "BIOUL",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": false
+      },
+      "token_characters": {
+        "type": "characters",
+        "character_tokenizer": {
+          "end_tokens": ["@@PADDING@@", "@@PADDING@@"]
+        }
+      },
+    }
+  },
+  "train_data_path": "project/data/train/ner-conll/concat.conll",
+  "validation_data_path": "project/data/dev/ner-conll/concat.conll",
+  "test_data_path": "project/data/test/ner-conll/concat.conll",
+  "evaluate_on_test" : true,
+  "model": {
+    "type": "crf_tagger",
+    "label_encoding": "BIOUL",
+    "constrain_crf_decoding": true,
+    "calculate_span_f1": true,
+    "dropout": 0.5,
+    "include_start_end_transitions": false,
+    "text_field_embedder": {
+      "token_embedders": {
+        "tokens": {
+            "type": "embedding",
+            "embedding_dim": 50,
+            "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.50d.txt.gz",
+            "trainable": true
+        },
+        "token_characters": {
+            "type": "character_encoding",
+            "embedding": {
+                "embedding_dim": 16
+            },
+            "encoder": {
+                "type": "cnn",
+                "embedding_dim": 16,
+                "num_filters": 128,
+                "ngram_filter_sizes": [3],
+                "conv_layer_activation": "relu"
+            }
+          }
+       },
+    },
+    "encoder": {
+        "type": "lstm",
+        "input_size": 178,
+        "hidden_size": 200,
+        "num_layers": 2,
+        "dropout": 0.5,
+        "bidirectional": true
+    },
+    "initializer": [
+      [".*tag_projection_layer.*weight", {"type": "xavier_uniform"}],
+      [".*tag_projection_layer.*bias", {"type": "zero"}],
+      [".*feedforward.*weight", {"type": "xavier_uniform"}],
+      [".*feedforward.*bias", {"type": "zero"}],
+      [".*weight_ih.*", {"type": "xavier_uniform"}],
+      [".*weight_hh.*", {"type": "orthogonal"}],
+      [".*bias_ih.*", {"type": "zero"}],
+      [".*bias_hh.*", {"type": "lstm_hidden_bias"}]
+    ]
+  },
+  "iterator": {
+    "type": "bucket",
+    "batch_size": 32,
+    "sorting_keys": [["tokens", "num_tokens"]]
+  },
+  "trainer": {
+    "optimizer": {
+        "type": "adam",
+        "lr": 0.001
+    },
+    "validation_metric": "+f1-measure-overall",
+    "num_serialized_models_to_keep": 3,
+    "num_epochs": 75,
+    "grad_norm": 5.0,
+    "patience": 25,
+    "cuda_device": 0
+  }
+}
