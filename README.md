@@ -1,4 +1,7 @@
 # Download data before running things
+There are large files and data folders that cannot be put on github, so they are on s3. Before running things, you will need to download the data, dataset_split_data, and holdout_sampled folders from this s3 bucket and place them at the top level of the project folder.
+
+# Download data before running things
 There are large files and data folders that cannot be put on github, so they are on s3. Before running things, you will need to download the `data`, `dataset_split_data`, and `holdout_sampled` folders from [this s3 bucket](https://s3.console.aws.amazon.com/s3/buckets/ai2-s2-rcc/?region=us-west-2&tab=overview) and place them at the top level of the project folder.
 
 # Estimated runtime
