@@ -9,7 +9,7 @@ On the phase 2 set (5000 papers), our model takes approximately 11 hours to run 
 
 The data folder contains the input files to make predictions on and the output files that the predictions are written to.
 
-The project folder contains all the code/data that our model needs to run. When the organizers run our code, it will run through the code.sh shell script which runs project/project.py.
+The project folder contains all the code/data that our model needs to run. When the organizers run our code, it will run through the code.sh shell script which runs project/project.py. In project/project.py, one can see the main flow that loads all data and runs all models for the competition.
 
 The general approach to dataset extraction is to use a combination of string matching between the text and the knowledge base and named entity recognition to generate potential dataset extractions, and then run a classifier on those candidates to decide which candidates to output as predicted extractions.
 
