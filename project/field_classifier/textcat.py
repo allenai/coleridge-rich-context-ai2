@@ -120,8 +120,8 @@ class TextCatReader(DatasetReader):
 
         for line, is_labeled in lines:
             items = json.loads(line)
-            text = items["text"]
-            label = str(items['label'])
+            text = items["tokens"]
+            label = str(items['category'])
             instance = self.text_to_instance(text=text, label=label, is_labeled=is_labeled)
             if instance is not None:
                 yield instance

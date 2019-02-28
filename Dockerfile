@@ -33,5 +33,5 @@ RUN git clone https://github.com/Coleridge-Initiative/rich-context-competition.g
 RUN pip3 install xgboost==0.81 allennlp==0.8.1 textacy==0.6.2
 
 RUN pip3 install msgpack==0.5.6 msgpack-numpy==0.4.4.0 thinc==6.12.0
-
+RUN rm -f /usr/bin/python && ln -s /usr/bin/python3 /usr/bin/python
 LABEL maintainer="jonathan.morgan@nyu.edu"
