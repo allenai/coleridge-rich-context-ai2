@@ -35,10 +35,12 @@ All commands are expected to be run through Docker
 
 ## NER model
 This command was run on [Beaker](https://beaker.org/)
+
 `allennlp train project/ner_model/tweaked_parameters_config.json -s <where_to_output_the_model> --include-package ner_rcc`
 
 ## Linking model
 Before running this command, `project/create_linking_dataset.py` and `project/create_sgtb_dataset.py` need to be run.
+
 `project/xgboost_linking.py`
 
 ## Methods prediction
