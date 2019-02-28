@@ -30,6 +30,26 @@ All commands should be run through docker
 - Train the XGBoost model (Note: you may want to change the name of the model that gets saved to increment version number): `project/xgboost_linking.py`
 - Train the Field Classifier: `project/train_field_classifier.sh`
 
+# Training of different components
+All commands are expected to be run through Docker
+
+## NER model
+This command was run on [Beaker](https://beaker.org/)
+
+`allennlp train project/ner_model/tweaked_parameters_config.json -s <where_to_output_the_model> --include-package ner_rcc`
+
+## Linking model
+Before running this command, `project/create_linking_dataset.py` and `project/create_sgtb_dataset.py` need to be run.
+
+`project/xgboost_linking.py`
+
+## Methods prediction
+No training required for this component
+
+## Fields prediction
+`./project/train_field_classifier.sh`
+
+
 ## Prepare for a new submission by executing the following steps (these can be executed on any machine):
 1. cd to your local clone of [our github repo](https://github.com/allenai/rich-context-composition-s2) then: `git checkout master && git pull`. If you don't already have a clone, you'll need to [install git-lfs](https://git-lfs.github.com) then clone it as usual: `git clone git@github.com:allenai/rich-context-composition-s2.git && cd rich-context-composition-s2` but be prepared to wait for ~8 hours for all the PDF files to be cloned locally.
 2. prepare the submission file: `cd ../ && zip -r rich-context-composition-s2.zip rich-context-composition-s2/ -x *.git* -x *.spacy -x *.pdf`
