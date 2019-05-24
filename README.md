@@ -7,7 +7,7 @@ On the phase 2 set (5000 papers), our model takes approximately 11 hours to run 
 
 # Overall structure
 
-The data folder contains the input files to make predictions on and the output files that the predictions are written to.
+The data folder contains input files to make predictions on and the output files that the predictions are written to.
 
 The project folder contains all the code/data that our model needs to run. When the organizers run our code, it will run through the code.sh shell script which runs project/project.py. In project/project.py, one can see the main flow that loads all data and runs all models for the competition.
 
